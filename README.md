@@ -1,1 +1,2 @@
-# oop2026-group-as34e
+# Saida Amirgaliyeva
+# Azamat Merzemkhan
