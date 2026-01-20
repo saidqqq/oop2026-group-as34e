@@ -159,9 +159,13 @@ public class TaskRepository implements ITaskRepository {
             if (affectedRows == 0) {
                 throw new TaskNotFoundException("Task with ID " + id + " not found");
             }
+
+            System.out.println("✅ Task deleted successfully");
         } catch (SQLException e) {
-            System.err.println("Error deleting task: " + e.getMessage());
+            System.err.println("❌ Error deleting task: " + e.getMessage());
+            throw new RuntimeException("Failed to delete task", e);
         } catch (TaskNotFoundException e) {
+            System.err.println("❌ " + e.getMessage());
             throw new RuntimeException(e);
         }
     }

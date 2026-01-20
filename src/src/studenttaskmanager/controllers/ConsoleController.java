@@ -26,7 +26,7 @@ public class ConsoleController {
     }
 
     public void start() {
-        System.out.println("🚀 Student Task Management System Started!");
+        System.out.println("Student Task Management System Started!");
         System.out.println("==========================================");
 
         boolean running = true;
@@ -74,20 +74,20 @@ public class ConsoleController {
     }
 
     private void printMenu() {
-        System.out.println("\n📋 MAIN MENU");
-        System.out.println("1. 📝 Create new task");
-        System.out.println("2. 📋 List all tasks");
-        System.out.println("3. 📁 List tasks by project");
-        System.out.println("4. 🔄 Change task status");
-        System.out.println("5. ⏰ Set task deadline");
-        System.out.println("6. 🗑️  Delete task");
-        System.out.println("7. 🔍 View task details");
-        System.out.println("0. ❌ Exit");
-        System.out.print("👉 Choose an option: ");
+        System.out.println("\nMAIN MENU");
+        System.out.println("1. Create new task");
+        System.out.println("2. List all tasks");
+        System.out.println("3. List tasks by project");
+        System.out.println("4. Change task status");
+        System.out.println("5. Set task deadline");
+        System.out.println("6. Delete task");
+        System.out.println("7. View task details");
+        System.out.println("0. Exit");
+        System.out.print("Choose an option: ");
     }
 
     private void createTask() {
-        System.out.println("\n📝 CREATE NEW TASK");
+        System.out.println("\nCREATE NEW TASK");
         System.out.print("Enter task title: ");
         String title = scanner.nextLine();
 
@@ -99,16 +99,16 @@ public class ConsoleController {
 
         try {
             Task task = taskService.createTask(title, description, projectId);
-            System.out.println("✅ Task created successfully!");
-            System.out.println("   ID: " + task.getId());
-            System.out.println("   Title: " + task.getTitle());
+            System.out.println("Task created successfully!");
+            System.out.println("ID: " + task.getId());
+            System.out.println("Title: " + task.getTitle());
         } catch (ProjectNotFoundException e) {
-            System.out.println("❌ Error: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
     }
 
     private void listAllTasks() {
-        System.out.println("\n📋 ALL TASKS");
+        System.out.println("\nALL TASKS");
         List<Task> tasks = taskService.getAllTasks();
 
         if (tasks.isEmpty()) {
@@ -135,7 +135,7 @@ public class ConsoleController {
         if (tasks.isEmpty()) {
             System.out.println("No tasks found for project " + projectId);
         } else {
-            System.out.println("📁 Tasks in Project " + projectId + ":");
+            System.out.println("Tasks in Project " + projectId + ":");
             for (Task task : tasks) {
                 System.out.println("  • " + task.getTitle() + " [" + task.getStatus() + "]");
             }
@@ -152,11 +152,11 @@ public class ConsoleController {
 
         try {
             Task task = taskService.changeStatus(taskId, newStatus);
-            System.out.println("✅ Status updated successfully!");
-            System.out.println("   Task: " + task.getTitle());
-            System.out.println("   New Status: " + task.getStatus());
+            System.out.println("Status updated successfully!");
+            System.out.println("Task: " + task.getTitle());
+            System.out.println("New Status: " + task.getStatus());
         } catch (TaskNotFoundException | InvalidStatusException e) {
-            System.out.println("❌ Error: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
     }
 
@@ -170,13 +170,13 @@ public class ConsoleController {
         try {
             LocalDateTime deadline = LocalDateTime.parse(deadlineStr, formatter);
             Task task = taskService.setDeadline(taskId, deadline);
-            System.out.println("✅ Deadline set successfully!");
-            System.out.println("   Task: " + task.getTitle());
-            System.out.println("   Deadline: " + task.getDeadline());
+            System.out.println("Deadline set successfully!");
+            System.out.println("Task: " + task.getTitle());
+            System.out.println("Deadline: " + task.getDeadline());
         } catch (DateTimeParseException e) {
-            System.out.println("❌ Invalid date format. Use: yyyy-MM-dd HH:mm");
+            System.out.println("Invalid date format. Use: yyyy-MM-dd HH:mm");
         } catch (TaskNotFoundException | DeadlinePassedException e) {
-            System.out.println("❌ Error: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
     }
 
@@ -192,9 +192,9 @@ public class ConsoleController {
                 Task task = taskService.getTaskById(taskId);
                 System.out.println("Deleting task: " + task.getTitle());
                 // Здесь должна быть логика удаления из TaskRepository
-                System.out.println("✅ Task deleted successfully!");
+                System.out.println("Task deleted successfully!");
             } catch (TaskNotFoundException e) {
-                System.out.println("❌ Error: " + e.getMessage());
+                System.out.println("Error: " + e.getMessage());
             }
         } else {
             System.out.println("Deletion cancelled.");
@@ -207,7 +207,7 @@ public class ConsoleController {
 
         try {
             Task task = taskService.getTaskById(taskId);
-            System.out.println("\n🔍 TASK DETAILS");
+            System.out.println("\nTASK DETAILS");
             System.out.println("─────────────────────────────────────");
             System.out.println("ID: " + task.getId());
             System.out.println("Title: " + task.getTitle());
@@ -218,7 +218,7 @@ public class ConsoleController {
                     (task.getDeadline() != null ? task.getDeadline() : "Not set"));
             System.out.println("Created: " + task.getCreatedAt());
         } catch (TaskNotFoundException e) {
-            System.out.println("❌ Error: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

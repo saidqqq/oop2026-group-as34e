@@ -28,9 +28,9 @@ public class Main {
             controller.start();
 
         } catch (Exception e) {
-            System.err.println("❌ Fatal error: " + e.getMessage());
+            System.err.println("  Fatal error: " + e.getMessage());
             e.printStackTrace();
-            System.out.println("\n⚠️  TROUBLESHOOTING:");
+            System.out.println("\n⚠   TROUBLESHOOTING:");
             System.out.println("1. Check if PostgreSQL is running");
             System.out.println("2. Check database connection settings in PostgresDB.java");
             System.out.println("3. Run db.sql script to create tables");
