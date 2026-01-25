@@ -28,6 +28,15 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
+    public void deleteTask(Integer taskId) throws TaskNotFoundException {
+        Task task = taskRepository.findById(taskId);
+        if (task == null) {
+            throw new TaskNotFoundException("Task with ID " + taskId + " not found");
+        }
+        taskRepository.delete(taskId);
+    }
+
+
     public Task changeStatus(Integer taskId, String newStatus)
             throws TaskNotFoundException, InvalidStatusException {
         Task task = taskRepository.findById(taskId);

@@ -1,6 +1,7 @@
 package studenttaskmanager.repositories;
 
 import studenttaskmanager.entities.Task;
+import studenttaskmanager.exceptions.TaskNotFoundException; // ← ДОБАВЬ ЭТО
 import java.util.List;
 
 public interface ITaskRepository {
@@ -9,5 +10,5 @@ public interface ITaskRepository {
     List<Task> findByProjectId(Integer projectId);
     Task save(Task task);
     Task update(Task task);
-    void delete(Integer id);
+    void delete(Integer taskId) throws TaskNotFoundException; // ← добавь throws
 }

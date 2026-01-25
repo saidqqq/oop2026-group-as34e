@@ -190,8 +190,8 @@ public class ConsoleController {
         if (confirm.equalsIgnoreCase("yes")) {
             try {
                 Task task = taskService.getTaskById(taskId);
+                taskService.deleteTask(taskId);
                 System.out.println("Deleting task: " + task.getTitle());
-                // Здесь должна быть логика удаления из TaskRepository
                 System.out.println("Task deleted successfully!");
             } catch (TaskNotFoundException e) {
                 System.out.println("Error: " + e.getMessage());

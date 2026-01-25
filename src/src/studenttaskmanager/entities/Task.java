@@ -21,7 +21,7 @@ public class Task {
         this.projectId = projectId;
     }
 
-    // Геттеры
+
     public Integer getId() { return id; }
     public String getTitle() { return title; }
     public String getDescription() { return description; }
@@ -31,7 +31,6 @@ public class Task {
     public Integer getAssignedTo() { return assignedTo; }
     public LocalDateTime getCreatedAt() { return createdAt; }
 
-    // Сеттеры
     public void setId(Integer id) { this.id = id; }
     public void setTitle(String title) { this.title = title; }
     public void setDescription(String description) { this.description = description; }

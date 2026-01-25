@@ -8,7 +8,6 @@ public class User {
     private String email;
     private LocalDateTime createdAt;
 
-    // Конструкторы
     public User() {}
 
     public User(String name, String email) {
@@ -16,13 +15,11 @@ public class User {
         this.email = email;
     }
 
-    // Геттеры
     public Integer getId() { return id; }
     public String getName() { return name; }
     public String getEmail() { return email; }
     public LocalDateTime getCreatedAt() { return createdAt; }
 
-    // Сеттеры
     public void setId(Integer id) { this.id = id; }
     public void setName(String name) { this.name = name; }
     public void setEmail(String email) { this.email = email; }

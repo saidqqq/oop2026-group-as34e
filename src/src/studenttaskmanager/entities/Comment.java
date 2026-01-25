@@ -17,14 +17,13 @@ public class Comment {
         this.userId = userId;
     }
 
-    // Геттеры
+
     public Integer getId() { return id; }
     public String getText() { return text; }
     public Integer getTaskId() { return taskId; }
     public Integer getUserId() { return userId; }
     public LocalDateTime getCreatedAt() { return createdAt; }
 
-    // Сеттеры
     public void setId(Integer id) { this.id = id; }
     public void setText(String text) { this.text = text; }
     public void setTaskId(Integer taskId) { this.taskId = taskId; }

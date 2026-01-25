@@ -147,7 +147,7 @@ public class TaskRepository implements ITaskRepository {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Integer id) throws TaskNotFoundException {
         String sql = "DELETE FROM tasks WHERE id = ?";
 
         try (Connection conn = db.getConnection();
@@ -160,15 +160,11 @@ public class TaskRepository implements ITaskRepository {
                 throw new TaskNotFoundException("Task with ID " + id + " not found");
             }
 
-            System.out.println("✅ Task deleted successfully");
         } catch (SQLException e) {
-            System.err.println("❌ Error deleting task: " + e.getMessage());
             throw new RuntimeException("Failed to delete task", e);
-        } catch (TaskNotFoundException e) {
-            System.err.println("❌ " + e.getMessage());
-            throw new RuntimeException(e);
         }
     }
+
 
     private Task mapRowToTask(ResultSet rs) throws SQLException {
         Task task = new Task();
