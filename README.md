@@ -1,2 +1,4 @@
-# Saida Amirgaliyeva
-# Azamat Merzemkhan
+# Student Task Manager
+
+- Saida Amirgaliyeva
+- Azamat Merzemkhan
