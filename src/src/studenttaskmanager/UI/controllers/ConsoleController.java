@@ -1,11 +1,10 @@
-package studenttaskmanager.controllers;
+package studenttaskmanager.UI.controllers;
 
-import studenttaskmanager.services.TaskService;
-import studenttaskmanager.entities.Task;
-import studenttaskmanager.exceptions.*;
-import studenttaskmanager.builders.ProjectBuilder;
-import studenttaskmanager.factories.TaskFactory;
-import studenttaskmanager.enums.TaskType;
+import studenttaskmanager.BUSINESS.services.TaskService;
+import studenttaskmanager.DOMAIN.entities.Task;
+import studenttaskmanager.BUSINESS.builders.ProjectBuilder;
+import studenttaskmanager.BUSINESS.factories.TaskFactory;
+import studenttaskmanager.DOMAIN.enums.TaskType;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -24,7 +23,7 @@ public class ConsoleController {
     }
 
     public void start() {
-        System.out.println("🚀 Student Task Management System v2.0");
+        System.out.println("Student Task Management System v2.0");
         System.out.println("======================================");
 
         boolean running = true;
@@ -58,19 +57,19 @@ public class ConsoleController {
     }
 
     private void printMainMenu() {
-        System.out.println("\n📋 MAIN MENU - ASSIGNMENT 4");
-        System.out.println("1.  📝 Create simple task (A3 style)");
-        System.out.println("2.  🏭 Create task using Factory pattern");
-        System.out.println("3.  🛠️  Create project using Builder pattern");
-        System.out.println("4.  📋 List all tasks");
-        System.out.println("5.  🔍 Filter tasks using Lambda");
-        System.out.println("6.  ⚠️  Show high priority tasks (Lambda)");
-        System.out.println("7.  ⏰ Show tasks due soon (Lambda)");
-        System.out.println("8.  🏷️  Show tasks by type (Lambda)");
-        System.out.println("9.  🔄 Change task status");
-        System.out.println("10. 📅 Set task deadline");
-        System.out.println("11. 🗑️  Delete task");
-        System.out.println("0.  ❌ Exit");
+        System.out.println("\nMAIN MENU - ASSIGNMENT 4");
+        System.out.println("1. Create simple task (A3 style)");
+        System.out.println("2.Create task using Factory pattern");
+        System.out.println("3.Create project using Builder pattern");
+        System.out.println("4.List all tasks");
+        System.out.println("5.Filter tasks using Lambda");
+        System.out.println("6. Show high priority tasks (Lambda)");
+        System.out.println("7. Show tasks due soon (Lambda)");
+        System.out.println("8. Show tasks by type (Lambda)");
+        System.out.println("9.Change task status");
+        System.out.println("10.Set task deadline");
+        System.out.println("11. Delete task");
+        System.out.println("0.  Exit");
         System.out.print("👉 Choose an option: ");
     }
 
@@ -91,7 +90,7 @@ public class ConsoleController {
     }
 
     private void createTaskWithFactory() {
-        System.out.println("\n🏭 CREATE TASK USING FACTORY PATTERN");
+        System.out.println("\nCREATE TASK USING FACTORY PATTERN");
         System.out.println("Available task types: BUG, FEATURE, RESEARCH");
         System.out.print("Enter task type: ");
         String type = scanner.nextLine().toUpperCase();

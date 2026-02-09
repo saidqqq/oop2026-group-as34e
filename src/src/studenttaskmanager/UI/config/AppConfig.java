@@ -1,6 +1,5 @@
-package studenttaskmanager.config;
+package studenttaskmanager.UI.config;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -11,7 +10,6 @@ public class AppConfig {
     private AppConfig() {
         loadProperties();
     }
-
 
     public static synchronized AppConfig getInstance() {
         if (instance == null) {
@@ -27,20 +25,27 @@ public class AppConfig {
 
             if (input != null) {
                 properties.load(input);
+                System.out.println("Loaded configuration from config.properties");
             } else {
+                // Use default values if file not found
                 setDefaultProperties();
+                System.out.println("Using default configuration");
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
+            System.err.println("Error loading config: " + e.getMessage());
             setDefaultProperties();
         }
     }
 
     private void setDefaultProperties() {
+        properties = new Properties();
         properties.setProperty("db.url", "jdbc:postgresql://localhost:5432/student_tasks_db");
         properties.setProperty("db.user", "postgres");
         properties.setProperty("db.password", "12345");
-        properties.setProperty("app.name", "Student Task Manager");
-        properties.setProperty("app.version", "2.0");
+        properties.setProperty("app.name", "Student Task Manager v2.0");
+        properties.setProperty("app.version", "2.0.0");
+        properties.setProperty("default.project.id", "1");
+        properties.setProperty("max.tasks.per.project", "100");
     }
 
     public String getDbUrl() {
@@ -57,5 +62,17 @@ public class AppConfig {
 
     public String getAppName() {
         return properties.getProperty("app.name");
+    }
+
+    public String getAppVersion() {
+        return properties.getProperty("app.version");
+    }
+
+    public int getDefaultProjectId() {
+        return Integer.parseInt(properties.getProperty("default.project.id"));
+    }
+
+    public int getMaxTasksPerProject() {
+        return Integer.parseInt(properties.getProperty("max.tasks.per.project"));
     }
 }
