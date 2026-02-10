@@ -1,10 +1,10 @@
 package studenttaskmanager;
 
-import studenttaskmanager.config.AppConfig;
-import studenttaskmanager.db.PostgresDB;
-import studenttaskmanager.repositories.TaskRepository;
-import studenttaskmanager.services.TaskService;
-import studenttaskmanager.controllers.ConsoleController;
+import studenttaskmanager.UI.config.AppConfig;
+import studenttaskmanager.DATA.db.PostgresDB;
+import studenttaskmanager.DATA.repositories.TaskRepository;
+import studenttaskmanager.BUSINESS.services.TaskService;
+import studenttaskmanager.UI.controllers.ConsoleController;
 
 public class Main {
     public static void main(String[] args) {
